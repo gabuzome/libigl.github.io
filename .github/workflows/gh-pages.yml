@@ -18,14 +18,12 @@ jobs:
         uses: s-weigand/setup-conda@v1.0.1
 
       - name: Install dependencies
-        shell: bash
-        run: |
-          conda env create -f libigl-website.yml
-          conda init bash
+        run: conda env create -f libigl-website.yml
 
       - name: Build website
         shell: bash
         run: |
+          source /usr/share/miniconda/etc/profile.d/conda.sh
           conda activate libigl-website
           mkdocs build
 
