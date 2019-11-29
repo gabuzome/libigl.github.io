@@ -15,14 +15,6 @@ jobs:
 
       - name: Setup Conda
         uses: s-weigand/setup-conda@v1.0.1
-        with:
-          activate-conda: false
-
-      - name: Setup Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: '3.6'
-          architecture: 'x64'
 
       # - name: Cache dependencies
       #   uses: actions/cache@v1
