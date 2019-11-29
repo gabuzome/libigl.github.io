@@ -25,6 +25,7 @@ jobs:
       - name: Build website
         run: |
           conda init bash
+          source .bashrc
           conda activate libigl-website
           mkdocs build
 
