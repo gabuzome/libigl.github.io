@@ -1,0 +1,51 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - docs
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Setup Conda
+        uses: s-weigand/setup-conda@v1.0.1
+        with:
+          activate-conda: false
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.6'
+          architecture: 'x64'
+
+      # - name: Cache dependencies
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: ~/.cache/pip
+      #     key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: conda env create -f libigl-website.yml
+
+      - name: Build website
+        run: |
+          conda activate libigl-website
+          mkdocs build
+
+      - name: Deploy to GitHub Pages
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: master
+          PUBLISH_DIR: ./site
+          SCRIPT_MODE: true
+        run: |
+          wget https://raw.githubusercontent.com/peaceiris/actions-gh-pages/v2.5.0/entrypoint.sh
+          bash ./entrypoint.sh
