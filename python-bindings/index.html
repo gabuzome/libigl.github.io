@@ -3,7 +3,7 @@
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>All the information on this web page describe the <strong>old</strong> Python bindings, present
-on the <code class="codehilite"><span class="n">master</span></code> branch of the <code class="codehilite"><span class="n">libigl</span></code> repository. Those bindings will be removed
+on the <code class="codehilite"><span class="err">master</span></code> branch of the <code class="codehilite"><span class="err">libigl</span></code> repository. Those bindings will be removed
 and replaced by a <a href="https://geometryprocessing.github.io/libigl-python-bindings/tutorials/">new and improved version</a> in a future version of libigl. It is a radical change which breaks
 compatibility between previous versions. A current beta version can be installed
 trough <a href="https://anaconda.org/conda-forge/igl">conda-forge</a>. We plan to stabilize
@@ -58,7 +58,7 @@ python 102_DrawMesh.py
 surfaces in python. It behaves in the same way as the C++ viewer and supports
 native python functions as callbacks. This is a simple example that loads
 two meshes and switches between the two when a key is pressed:</p>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pyigl</span> <span class="kn">as</span> <span class="nn">igl</span>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">pyigl</span> <span class="k">as</span> <span class="nn">igl</span>
 
 <span class="n">V1</span> <span class="o">=</span> <span class="n">igl</span><span class="o">.</span><span class="n">eigen</span><span class="o">.</span><span class="n">MatrixXd</span><span class="p">()</span>
 <span class="n">F1</span> <span class="o">=</span> <span class="n">igl</span><span class="o">.</span><span class="n">eigen</span><span class="o">.</span><span class="n">MatrixXi</span><span class="p">()</span>
@@ -67,7 +67,7 @@ two meshes and switches between the two when a key is pressed:</p>
 <span class="n">F2</span> <span class="o">=</span> <span class="n">igl</span><span class="o">.</span><span class="n">eigen</span><span class="o">.</span><span class="n">MatrixXi</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">key_pressed</span><span class="p">(</span><span class="n">viewer</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">modifier</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Key: &quot;</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Key: &quot;</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">):</span>
         <span class="c1"># # Clear should be called before drawing the mesh</span>
@@ -81,15 +81,15 @@ two meshes and switches between the two when a key is pressed:</p>
         <span class="n">viewer</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="o">.</span><span class="n">clear</span><span class="p">();</span>
         <span class="n">viewer</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="o">.</span><span class="n">set_mesh</span><span class="p">(</span><span class="n">V2</span><span class="p">,</span> <span class="n">F2</span><span class="p">);</span>
         <span class="n">viewer</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">align_camera_center</span><span class="p">(</span><span class="n">V2</span><span class="p">,</span><span class="n">F2</span><span class="p">);</span>
-    <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="kc">False</span>
 
 
 <span class="c1">#  Load two meshes</span>
 <span class="n">igl</span><span class="o">.</span><span class="n">readOFF</span><span class="p">(</span><span class="s2">&quot;../tutorial/shared/bumpy.off&quot;</span><span class="p">,</span> <span class="n">V1</span><span class="p">,</span> <span class="n">F1</span><span class="p">);</span>
 <span class="n">igl</span><span class="o">.</span><span class="n">readOFF</span><span class="p">(</span><span class="s2">&quot;../tutorial/shared/fertility.off&quot;</span><span class="p">,</span> <span class="n">V2</span><span class="p">,</span> <span class="n">F2</span><span class="p">);</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;1 Switch to bump mesh&quot;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;2 Switch to fertility mesh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 Switch to bump mesh&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2 Switch to fertility mesh&quot;</span><span class="p">)</span>
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">igl</span><span class="o">.</span><span class="n">glfw</span><span class="o">.</span><span class="n">Viewer</span><span class="p">()</span>
 
@@ -111,8 +111,8 @@ information on how to use it see the documentation in <a href="https://github.co
 We provide a few examples in the folder python/matlab.</p>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
 <p>The python functions have exactly the same prototypes as their C++ counterpart.
-Docstrings for all available python functions are extracted from the C++ header files and compiled into the python module. To get help for a certain function, you can run <code class="codehilite"><span class="n">help</span><span class="p">(</span><span class="n">pyigl</span><span class="p">.</span><span class="o">&lt;</span><span class="n">function_name</span><span class="o">&gt;</span><span class="p">)</span></code> in the python console.</p>
-<p>In the scripts folder there is the script <code class="codehilite"><span class="n">generate_docstrings</span><span class="p">.</span><span class="n">py</span></code> that automatically generates python docstrings for a new function. You can run it with <code class="codehilite"><span class="n">generate_docstrings</span><span class="p">.</span><span class="n">py</span> <span class="o">&lt;</span><span class="n">path_to_cpp_header_files</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">path_to_python_files</span><span class="o">&gt;</span></code>.
+Docstrings for all available python functions are extracted from the C++ header files and compiled into the python module. To get help for a certain function, you can run <code class="codehilite"><span class="err">help(pyigl.&lt;function_name&gt;)</span></code> in the python console.</p>
+<p>In the scripts folder there is the script <code class="codehilite"><span class="err">generate_docstrings.py</span></code> that automatically generates python docstrings for a new function. You can run it with <code class="codehilite"><span class="err">generate_docstrings.py &lt;path_to_cpp_header_files&gt; &lt;path_to_python_files&gt;</span></code>.
 The script depends on additional libraries (joblib, mako, clang), make sure to install them (e.g. through pip. python-clang is included in external/pybind11/tools/clang).</p>
 <h2 id="known-issues">Known Issues<a class="headerlink" href="#known-issues" title="Permanent link">&para;</a></h2>
 <h2 id="contact">Contact<a class="headerlink" href="#contact" title="Permanent link">&para;</a></h2>
