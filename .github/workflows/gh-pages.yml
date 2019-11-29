@@ -19,15 +19,8 @@ jobs:
         with:
           activate-conda: true
 
-      - name: Install dependencies
-        run: conda env create -f libigl-website.yml
-
       - name: Build website
-        run: |
-          conda init bash
-          source ~/.bashrc
-          conda activate libigl-website
-          mkdocs build
+        run: bash ./.github/workflows/build-website.sh
 
       - name: Deploy to GitHub Pages
         env:
