@@ -18,6 +18,7 @@ jobs:
         uses: s-weigand/setup-conda@v1.0.1
 
       - name: Install dependencies
+        shell: bash
         run: |
           conda env create -f libigl-website.yml
           conda init bash
